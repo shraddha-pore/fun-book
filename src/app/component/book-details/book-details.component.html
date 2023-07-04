@@ -1,0 +1,57 @@
+<div class="container">
+    <div class=" card row mt-4">
+        <div class="card-header bg-info text-center fw-bold fs-4">Welcome to Page</div>
+        <div class="card-body" *ngFor="let x of data | keyvalue;">
+            <div *ngIf="x.key != 'books'; else showList">
+                <label class="text-capitalize fw-bold">{{x.key}} :</label>
+                <span class="text-capitalize ms-2">{{x.value}}</span>
+            </div>
+            <ng-template #showList>
+                <table class="table table-responsive">
+                    <tbody>
+                        <tr class="row">
+                            <th class="bg-info fw-bold text-capitalize">
+                                <span>{{x.key}}</span>
+                                <div class="dropdown float-end">
+                                    <button class="btn btn-info btn-sm dropdown-toggle" type="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        ToDo
+                                    </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" [routerLink]="['/addBook']" (click)="addBook()">Add</a></li>
+                                    <li><a class="dropdown-item">Update</a></li>
+                                  </ul>
+                                  </div>
+                                <div class="dropdown float-end">
+                                    <button class="btn btn-info btn-sm dropdown-toggle" type="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        Sort By
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" (click)="sortBy('title')">Title</a></li>
+                                        <li><a class="dropdown-item" (click)="sortBy('PublishDate')">Published Date</a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </th>
+                            <td class="col-md-6" *ngFor="let book of bookList; let i = index;">
+                                <div class="book-list">
+                                    <p>
+                                        <span class="fw-bold">
+                                            <a href="{{book.purchaseLink}}">{{book.title}}({{book.PublishDate}})</a>
+                                        </span>
+
+                                        <i class="bi bi-trash float-end mx-2" (click)="deleteBook(i)"></i>
+                                        <i class="bi bi-pencil float-end" (click)="addBook()"></i>
+                                    </p>
+                                    <img class="w-25" src="{{book.imageUrl}}">
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </ng-template>
+        </div>
+    </div>
+</div>

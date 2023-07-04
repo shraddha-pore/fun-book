@@ -1,0 +1,7 @@
+.book-list:hover i{
+    visibility: visible;
+}
+
+.book-list i {
+    visibility: hidden;
+}

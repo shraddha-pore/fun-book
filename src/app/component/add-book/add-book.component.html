@@ -1,0 +1,43 @@
+<div class="container vh-100 col-4 mt-5">
+    <div class="card mt-3" style="height: auto;">
+        <div class="card-header text-center fw-bold bg-info">Add New Book</div>
+        <form [formGroup]="addBookForm" class="card-body mt-4">
+            <div class="mb-3">
+                <label for="title">Title: </label>
+                <input type="text" class="form-control mt-1" formControlName="title">
+                 <div class="fs-6 text-end text-danger" *ngIf="f['title'] && f['title'].invalid && f['title'].touched">This field
+                is required field.</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="Publishdate">Publish Date: </label>
+                <input type="string" class="form-control mt-1" formControlName="Publishdate">
+                <div  class="fs-6 text-end text-danger" *ngIf="f['Publishdate'].touched">
+                    <span *ngIf="f['Publishdate'].errors?.['required']">*This is required field</span>
+                    <span *ngIf="f['Publishdate'].errors?.['pattern'] || f['Publishdate'].errors?.['maxlength'] || f['Publishdate'].errors?.['minlength']">*Enter valid year</span>
+                </div> 
+            </div>
+            <div class="mb-3">
+                <label for="purchaseLink">Purchase Link: </label>
+                <input type="text" class="form-control mt-1" formControlName="purchaseLink">
+                <div class="fs-6 text-end text-danger" *ngIf="f['purchaseLink'] && f['purchaseLink'].invalid && f['purchaseLink'].touched">This field
+                    is required.</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="imageUrl">Image: </label>
+                <input type="text" class="form-control mt-1" formControlName="imageUrl">
+                <div class="fs-6 text-end text-danger" *ngIf="f['imageUrl'] && f['imageUrl'].invalid && f['imageUrl'].touched">This field
+                    is required.</div>
+            </div>
+            <div class="col-12">
+                <button class="btn btn-primary float-end" 
+                type="submit" 
+                (click)="addBook()"
+                [disabled]="!addBookForm.valid">Add Book</button>
+                <button class="btn btn-danger" [routerLink]="['']">Cancel</button>
+
+            </div>
+        </form>
+    </div>
+</div>
