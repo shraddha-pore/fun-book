@@ -28,10 +28,8 @@
                                         Sort By
                                     </button>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" (click)="sortBy('title')">Title</a></li>
-                                        <li><a class="dropdown-item" (click)="sortBy('PublishDate')">Published Date</a>
-                                        </li>
-
+                                        <li><a class="dropdown-item" (click)="sortBy('title')">Title {{sortIcon('title')}}</a></li>
+                                        <li><a class="dropdown-item" (click)="sortBy('PublishDate')">Published Date {{sortIcon('PublishDate')}}</a></li>
                                     </ul>
                                 </div>
                             </th>

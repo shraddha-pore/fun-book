@@ -65,4 +65,13 @@ export class BookDetailsComponent {
       return result * this.sortOrder;
     })];
   }
+
+  
+  //This functionality is to add sort icon
+  sortIcon(sortId: string) {
+    if (sortId === this.sortProperty) {
+        return this.sortOrder === 1 ? '☝️' : '👇';
+    }
+    return '';
+}
 }
